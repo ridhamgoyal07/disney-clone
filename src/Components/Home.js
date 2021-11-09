@@ -1,9 +1,19 @@
-import React from 'react';
+import React , { useEffect  , useState} from 'react';
 import styled from "styled-components";
 import ImgSlider from './ImgSlider';
 import Viewers from './Viewers';
 import Movies from './Movies';
+import db from '../firebase';
+
 const Home = () => {
+
+    useEffect(()=>{
+        console.log("Rdham");
+        db.collection("movies").onSnapshot((snapshot)=>{
+            console.warning(snapshot);
+        });
+    },[]);
+
     return (
         <Container>
             <ImgSlider /> 
